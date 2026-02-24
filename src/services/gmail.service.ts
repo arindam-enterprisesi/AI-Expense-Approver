@@ -37,11 +37,12 @@ class GmailService {
   private expiryTime: number = 0;
   private clientId: string;
   private clientSecret: string;
-  private redirectUri: string = 'http://localhost:8080/gmail-callback';
+  private redirectUri: string;
 
   constructor() {
     this.clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
     this.clientSecret = import.meta.env.VITE_GOOGLE_CLIENT_SECRET || '';
+    this.redirectUri = import.meta.env.VITE_GMAIL_REDIRECT_URI || 'http://localhost:8080/gmail-callback';
     
     // Load tokens from localStorage if available
     this.loadTokensFromStorage();
