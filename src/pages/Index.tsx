@@ -22,6 +22,9 @@ import { ProposalDetails } from '@/components/shared/ProposalDetails';
 import { storageService } from '@/lib/storage';
 import AdminSampleReport from '@/components/admin/AdminSampleReport';
 import { GmailCallback } from './GmailCallback';
+import { LandingPage } from './LandingPage';
+import { PrivacyPolicy } from './PrivacyPolicy';
+import { TermsOfService } from './TermsOfService';
 
 // User roles for dashboard switching
 export type UserRole = 'employee' | 'admin';
@@ -129,66 +132,79 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar currentUser={currentUser} setCurrentUser={handleSetCurrentUser} />
+      <Routes>
+        {/* Public Routes - No Authentication Required */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/gmail-callback" element={<GmailCallback />} />
 
-      <main className="container mx-auto px-4 py-8">
-        <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/gmail-callback" element={<GmailCallback />} />
-          <Route
-            path="/dashboard"
-            element={
-              currentUser === 'employee' ? (
-                <EmployeeDashboard
-                  proposals={proposals.filter(p => p.employeeId === 'emp001')}
-                  onDeleteProposal={deleteProposal}
-                  employeeId="emp001"
-                  employeeName="John Doe"
-                  // employeeEmail="john.doe@xyz.com"
-                  employeeEmail="expensemanager.ai@gmail.com"
-                  department="Sales"
-                  onProposalCreated={addProposal}
-                />
-              ) : (
-                <AdminDashboard
-                  proposals={proposals.filter(p => p.status !== 'draft')}
-                  updateProposal={updateProposal}
-                />
-              )
-            }
-          />
-           {/* Admin Markdown Viewer Route */}
-           <Route path="/admin/sample-statement" element={<AdminSampleReport />} />
-           <Route path="/admin/markdown-viewer" element={<AdminMarkdownViewer />} />
-          <Route
-            path="/create-proposal"
-            element={<CreateProposal onSubmit={addProposal} />}
-          />
-          <Route
-            path="/edit-proposal/:id"
-            element={
-              <EditProposal
-                proposals={proposals}
-                onSubmit={handleEditProposal}
-              />
-            }
-          />
-          <Route
-            path="/proposal/:id"
-            element={
-              <ProposalDetails
-                proposals={proposals}
-                currentUser={currentUser}
-                updateProposal={updateProposal}
-              />
-            }
-          />
-          <Route
-            path="/audit"
-            element={<AuditTrail />}
-          />
-        </Routes>
-      </main>
+        {/* Protected Routes - With Navbar */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <Navbar currentUser={currentUser} setCurrentUser={handleSetCurrentUser} />
+              <main className="container mx-auto px-4 py-8">
+                <Routes>
+                  <Route
+                    path="dashboard"
+                    element={
+                      currentUser === 'employee' ? (
+                        <EmployeeDashboard
+                          proposals={proposals.filter(p => p.employeeId === 'emp001')}
+                          onDeleteProposal={deleteProposal}
+                          employeeId="emp001"
+                          employeeName="John Doe"
+                          // employeeEmail="john.doe@xyz.com"
+                          employeeEmail="expensemanager.ai@gmail.com"
+                          department="Sales"
+                          onProposalCreated={addProposal}
+                        />
+                      ) : (
+                        <AdminDashboard
+                          proposals={proposals.filter(p => p.status !== 'draft')}
+                          updateProposal={updateProposal}
+                        />
+                      )
+                    }
+                  />
+                  {/* Admin Markdown Viewer Route */}
+                  <Route path="admin/sample-statement" element={<AdminSampleReport />} />
+                  <Route path="admin/markdown-viewer" element={<AdminMarkdownViewer />} />
+                  <Route
+                    path="create-proposal"
+                    element={<CreateProposal onSubmit={addProposal} />}
+                  />
+                  <Route
+                    path="edit-proposal/:id"
+                    element={
+                      <EditProposal
+                        proposals={proposals}
+                        onSubmit={handleEditProposal}
+                      />
+                    }
+                  />
+                  <Route
+                    path="proposal/:id"
+                    element={
+                      <ProposalDetails
+                        proposals={proposals}
+                        currentUser={currentUser}
+                        updateProposal={updateProposal}
+                      />
+                    }
+                  />
+                  <Route
+                    path="audit"
+                    element={<AuditTrail />}
+                  />
+                </Routes>
+              </main>
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 };
