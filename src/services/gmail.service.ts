@@ -42,7 +42,15 @@ class GmailService {
   constructor() {
     this.clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
     this.clientSecret = import.meta.env.VITE_GOOGLE_CLIENT_SECRET || '';
-    this.redirectUri = import.meta.env.VITE_GMAIL_REDIRECT_URI || 'http://localhost:8080/gmail-callback';
+    
+    // Get redirect URI from environment, with fallback to current origin
+    const envRedirectUri = import.meta.env.VITE_GMAIL_REDIRECT_URI;
+    if (envRedirectUri) {
+      this.redirectUri = envRedirectUri;
+    } else {
+      // Fallback: Use current origin + /gmail-callback
+      this.redirectUri = `${window.location.origin}/gmail-callback`;
+    }
     
     // Load tokens from localStorage if available
     this.loadTokensFromStorage();
