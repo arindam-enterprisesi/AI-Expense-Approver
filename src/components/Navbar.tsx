@@ -10,7 +10,7 @@
  *  - Shows app title, user role, and allows switching between employee/admin
  *  - Used at the top of all main pages
  */
-import { Building2, User, Shield } from 'lucide-react';
+import { User, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { UserRole } from '@/pages/Index';
 import { useNavigate } from 'react-router-dom';
@@ -27,8 +27,8 @@ export function Navbar({ currentUser, setCurrentUser }: NavbarProps) {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
-            <button onClick={() => navigate('/dashboard', { replace: true })}>
-              <Building2 className="h-8 w-8 text-[#5ABA47]" />
+            <button onClick={() => navigate('/dashboard', { replace: true })} className="flex items-center gap-2">
+              <img src="/ai-expense-approver logo.ico" alt="Logo" className="h-8 w-8" />
             </button>
             <div>
               <h1 className="text-xl font-bold text-gray-900">AI Expense Approver</h1>

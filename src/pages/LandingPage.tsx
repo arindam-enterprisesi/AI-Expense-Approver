@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Receipt, TrendingUp, Zap, Shield } from 'lucide-react';
+import { ArrowRight, TrendingUp, Zap, Shield } from 'lucide-react';
 
 export function LandingPage() {
   return (
@@ -10,8 +10,8 @@ export function LandingPage() {
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Receipt className="w-8 h-8 text-[#5ABA47]" />
-            <h1 className="text-2xl font-bold text-gray-900">AI Travel Expense Manager</h1>
+            <img src="/ai-expense-approver logo.ico" alt="Logo" className="w-8 h-8" />
+            <h1 className="text-2xl font-bold text-gray-900">AI Expense Approver</h1>
           </div>
           <Link to="/dashboard">
             <Button className="bg-[#5ABA47] hover:bg-[#4a9c3a] text-white">
@@ -110,8 +110,8 @@ export function LandingPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <Receipt className="w-6 h-6 text-[#5ABA47]" />
-              <span className="text-gray-600">© 2026 AI Travel Expense Manager</span>
+              <img src="/ai-expense-approver logo.ico" alt="Logo" className="w-6 h-6" />
+              <span className="text-gray-600">© 2026 AI Expense Approver</span>
             </div>
             <div className="flex gap-6">
               <Link to="/privacy-policy" className="text-gray-600 hover:text-[#5ABA47] transition-colors">

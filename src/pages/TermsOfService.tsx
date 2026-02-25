@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Receipt, FileText, Mail } from 'lucide-react';
+import { ArrowLeft, FileText, Mail } from 'lucide-react';
 
 export function TermsOfService() {
   return (
@@ -11,8 +11,8 @@ export function TermsOfService() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Receipt className="w-6 h-6 text-[#5ABA47]" />
-              <span className="font-semibold text-gray-900">AI Travel Expense Manager</span>
+              <img src="/ai-expense-approver logo.ico" alt="Logo" className="w-6 h-6" />
+              <span className="font-semibold text-gray-900">AI Expense Approver</span>
             </div>
             <Link to="/">
               <Button variant="outline" size="sm">
@@ -40,7 +40,7 @@ export function TermsOfService() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-gray-700">
-              By accessing and using AI Travel Expense Manager ("the Service"), you agree to be bound 
+              By accessing and using AI Expense Approver ("the Service"), you agree to be bound 
               by these Terms of Service. If you do not agree to these terms, please do not use the Service.
             </p>
           </CardContent>
@@ -52,7 +52,7 @@ export function TermsOfService() {
           </CardHeader>
           <CardContent className="space-y-3">
             <p className="text-gray-700">
-              AI Travel Expense Manager is a web application that helps users manage their travel 
+              AI Expense Approver is a web application that helps users manage their travel 
               expenses by:
             </p>
             <ul className="list-disc list-inside ml-4 space-y-2 text-gray-700">
@@ -359,7 +359,7 @@ export function TermsOfService() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-6 mt-12">
         <div className="container mx-auto px-4 text-center text-gray-600">
-          <p>© 2026 AI Travel Expense Manager. All rights reserved.</p>
+          <p>© 2026 AI Expense Approver. All rights reserved.</p>
         </div>
       </footer>
     </div>

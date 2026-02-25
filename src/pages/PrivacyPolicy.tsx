@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Receipt, Shield, Mail } from 'lucide-react';
+import { ArrowLeft, Shield, Mail } from 'lucide-react';
 
 export function PrivacyPolicy() {
   return (
@@ -11,8 +11,8 @@ export function PrivacyPolicy() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Receipt className="w-6 h-6 text-[#5ABA47]" />
-              <span className="font-semibold text-gray-900">AI Travel Expense Manager</span>
+              <img src="/ai-expense-approver logo.ico" alt="Logo" className="w-6 h-6" />
+              <span className="font-semibold text-gray-900">AI Expense Approver</span>
             </div>
             <Link to="/">
               <Button variant="outline" size="sm">
@@ -40,7 +40,7 @@ export function PrivacyPolicy() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-gray-700">
-              AI Travel Expense Manager is committed to protecting your privacy. This Privacy Policy 
+              AI Expense Approver is committed to protecting your privacy. This Privacy Policy 
               explains how we collect, use, and safeguard your information when you use our application.
             </p>
           </CardContent>
@@ -283,7 +283,7 @@ export function PrivacyPolicy() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-6 mt-12">
         <div className="container mx-auto px-4 text-center text-gray-600">
-          <p>© 2026 AI Travel Expense Manager. All rights reserved.</p>
+          <p>© 2026 AI Expense Approver. All rights reserved.</p>
         </div>
       </footer>
     </div>
